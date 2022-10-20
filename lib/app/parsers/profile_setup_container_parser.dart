@@ -1,39 +1,12 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
-class DecoratedContainerWidgetParser extends WidgetParser {
-  /// BorderDecoration
-  // BoxDecoration parseBoxDecoration(Map<String, dynamic>? map) {
-  //   Color? color = parseHexColor(map?['color']);
-  //   BorderRadius? borderRadius = BorderRadius.circular(map?['borderRadius']);
-  //   double? borderWidth = map?['borderWidth'];
-  //   return BoxDecoration(
-  //     borderRadius: borderRadius,
-  //     color: color,
-  //     border: Border.all(
-  //       width: borderWidth ?? 1,
-  //     ),
-  //   );
-  // }
+class ProfileSetupContainerParser extends WidgetParser {
   BoxDecoration parseBoxDecoration(Map<String, dynamic>? map) {
     return BoxDecoration(
-      borderRadius: BorderRadius.circular(5),
-      border: Border.all(width: .2),
-    );
+        color: Colors.white54, borderRadius: BorderRadius.circular(20));
   }
-
-  /// BorderDecoration
-  // Map<String, dynamic>? exportBorderSide(BoxDecoration? boxDecoration) {
-  //   if (boxDecoration == null) {
-  //     return null;
-  //   }
-  //   return <String, dynamic>{
-  //     "color": boxDecoration.color?.value.toRadixString(16),
-  //     "borderRadius": boxDecoration.borderRadius.,
-  //     "borderWidth": borderSide.style.index,
-  //   };
-  // }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -80,7 +53,7 @@ class DecoratedContainerWidgetParser extends WidgetParser {
   }
 
   @override
-  String get widgetName => "DecoratedContainer";
+  String get widgetName => "ProfileSetupContainer";
 
   @override
   Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {

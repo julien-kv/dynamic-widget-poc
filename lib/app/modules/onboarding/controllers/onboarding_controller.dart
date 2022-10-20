@@ -4,8 +4,6 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../home/controllers/home_controller.dart';
-
 class OnboardingController extends GetxController {
   final isLoading = false.obs;
   final finalJson = {}.obs;
@@ -37,10 +35,11 @@ class OnboardingController extends GetxController {
             "margin": "0.0,178.92,0.0,0.0",
             "constraints": null,
             "child": {
-              "type": "DecoratedContainer",
+              "type": "ProfileSetupContainer",
               "alignment": "center",
+              "decoration": null,
               "padding": null,
-              "color": null,
+              "color": "#ffffff",
               "margin": "20.0,0.0,20.0,90.0",
               "constraints": null,
               "child": {
@@ -132,7 +131,27 @@ class OnboardingController extends GetxController {
                         "verticalDirection": "down",
                         "children": [
                           {
-                            "type": "TextField",
+                            "type": "Text",
+                            "data": "Name",
+                            "textAlign": "start",
+                            "overflow": null,
+                            "maxLines": null,
+                            "semanticsLabel": null,
+                            "softWrap": null,
+                            "textDirection": "ltr",
+                            "style": {
+                              "color": "ff424242",
+                              "debugLabel": null,
+                              "decoration": "none",
+                              "fontSize": 14.0,
+                              "fontFamily": null,
+                              "fontStyle": "normal",
+                              "fontWeight": "normal"
+                            },
+                            "textScaleFactor": null
+                          },
+                          {
+                            "type": "NameTextField",
                           },
                           {
                             "type": "SizedBox",
@@ -146,7 +165,29 @@ class OnboardingController extends GetxController {
                             "height": 24.0,
                             "child": null
                           },
-                          null,
+                          {
+                            "type": "Text",
+                            "data": "Handle",
+                            "textAlign": "start",
+                            "overflow": null,
+                            "maxLines": null,
+                            "semanticsLabel": null,
+                            "softWrap": null,
+                            "textDirection": "ltr",
+                            "style": {
+                              "color": "ff424242",
+                              "debugLabel": null,
+                              "decoration": "none",
+                              "fontSize": 14.0,
+                              "fontFamily": null,
+                              "fontStyle": "normal",
+                              "fontWeight": "normal"
+                            },
+                            "textScaleFactor": null
+                          },
+                          {
+                            "type": "HandleTextField",
+                          },
                           {
                             "type": "SizedBox",
                             "width": null,
@@ -210,13 +251,28 @@ class OnboardingController extends GetxController {
     });
   }
 
-  Widget buildWidget(BuildContext context) {
-    return DynamicWidgetBuilder.build(
-            jsonEncode(finalJson), context, DefaultClickListener(context)) ??
-        SizedBox();
-  }
-
   @override
   void onClose() {}
   void increment() => count.value++;
+  Widget buildWidget(BuildContext context) {
+    return DynamicWidgetBuilder.build(jsonEncode(finalJson), context,
+            ProfileSetupClickListener(context)) ??
+        SizedBox();
+  }
+}
+
+class ProfileSetupClickListener extends ClickListener {
+  final BuildContext context;
+  ProfileSetupClickListener(this.context);
+
+  @override
+  void onClicked(String? event) async {}
+
+  void onNameTextChanged(String text) {
+    print("Name$text");
+  }
+
+  void onHandleTextChanged(String text) {
+    print(text);
+  }
 }

@@ -343,14 +343,14 @@ class HomeController extends GetxController {
 
   Widget buildWidget(BuildContext context) {
     return DynamicWidgetBuilder.build(
-            jsonEncode(finalJson), context, DefaultClickListener(context)) ??
+            jsonEncode(finalJson), context, LoginClickListener(context)) ??
         SizedBox();
   }
 }
 
-class DefaultClickListener extends ClickListener {
+class LoginClickListener extends ClickListener {
   final BuildContext context;
-  DefaultClickListener(this.context);
+  LoginClickListener(this.context);
 
   @override
   void onClicked(String? event) async {
@@ -359,9 +359,5 @@ class DefaultClickListener extends ClickListener {
       case "gotogoogle":
         Get.toNamed(Routes.ONBOARDING);
     }
-  }
-
-  void onTextChanged(TextEditingController textEditingController) {
-    print(textEditingController.text);
   }
 }

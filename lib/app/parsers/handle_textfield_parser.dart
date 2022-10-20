@@ -1,25 +1,21 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:onboarding/app/modules/onboarding/controllers/onboarding_controller.dart';
 
-import '../modules/home/controllers/home_controller.dart';
-
-class TextFieldParser extends WidgetParser {
+class HandleTextFieldParser extends WidgetParser {
   final TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
     return TextField(
-      decoration: InputDecoration(hintText: "Enter Password"),
-      controller: textEditingController,
-      onChanged: (text) {
-        (listener as DefaultClickListener).onTextChanged(textEditingController);
-      },
-    );
+        decoration: InputDecoration(hintText: "@"),
+        controller: textEditingController,
+        onChanged: (listener as ProfileSetupClickListener).onHandleTextChanged);
   }
 
   @override
-  String get widgetName => "TextField";
+  String get widgetName => "HandleTextField";
 
   @override
   Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
