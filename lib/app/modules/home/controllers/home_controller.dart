@@ -61,6 +61,7 @@ class HomeController extends GetxController {
           {"type": "SizedBox", "width": null, "height": 10.0, "child": null},
           {
             "type": "DecoratedContainer",
+            "decoration": null,
             "alignment": null,
             "padding": null,
             "color": null,
@@ -150,6 +151,7 @@ class HomeController extends GetxController {
           {"type": "SizedBox", "width": null, "height": 22.0, "child": null},
           {
             "type": "DecoratedContainer",
+            "decoration": null,
             "alignment": null,
             "padding": null,
             "color": null,
@@ -346,9 +348,10 @@ class HomeController extends GetxController {
   }
 }
 
-class DefaultClickListener implements ClickListener {
+class DefaultClickListener extends ClickListener {
   final BuildContext context;
   DefaultClickListener(this.context);
+
   @override
   void onClicked(String? event) async {
     print("Receive click event: ${event ?? ""}");
@@ -356,5 +359,9 @@ class DefaultClickListener implements ClickListener {
       case "gotogoogle":
         Get.toNamed(Routes.ONBOARDING);
     }
+  }
+
+  void onTextChanged(TextEditingController textEditingController) {
+    print(textEditingController.text);
   }
 }

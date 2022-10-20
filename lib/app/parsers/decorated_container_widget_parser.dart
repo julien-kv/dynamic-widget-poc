@@ -1,9 +1,9 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class DecoratedContainerWidgetParser extends WidgetParser {
-  BoxDecoration parseBoxDecoration(String? decorationString) {
+  BoxDecoration parseBoxDecoration(String? alignmentString) {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(5),
       border: Border.all(
@@ -22,8 +22,6 @@ class DecoratedContainerWidgetParser extends WidgetParser {
     BoxDecoration? boxDecoration = map.containsKey("decoration")
         ? parseBoxDecoration(map['decoration'])
         : null;
-
-    //TODO: decoration, foregroundDecoration and transform properties to be implemented.
     EdgeInsetsGeometry? margin = parseEdgeInsetsGeometry(map['margin']);
     EdgeInsetsGeometry? padding = parseEdgeInsetsGeometry(map['padding']);
     Map<String, dynamic>? childMap = map['child'];

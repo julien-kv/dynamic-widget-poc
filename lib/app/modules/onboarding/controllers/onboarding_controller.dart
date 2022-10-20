@@ -131,7 +131,9 @@ class OnboardingController extends GetxController {
                         "textDirection": null,
                         "verticalDirection": "down",
                         "children": [
-                          null,
+                          {
+                            "type": "TextField",
+                          },
                           {
                             "type": "SizedBox",
                             "width": null,
