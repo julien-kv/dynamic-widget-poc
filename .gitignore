@@ -44,4 +44,4 @@ app.*.map.json
 /android/app/release
 
 #json exporter
-lib/app/helper/json exporters
+lib/app/helper/json_exporters
