@@ -3,7 +3,7 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
 class DecoratedContainerWidgetParser extends WidgetParser {
-  /// BorderDecoration
+  // BorderDecoration
   // BoxDecoration parseBoxDecoration(Map<String, dynamic>? map) {
   //   Color? color = parseHexColor(map?['color']);
   //   BorderRadius? borderRadius = BorderRadius.circular(map?['borderRadius']);
@@ -16,6 +16,7 @@ class DecoratedContainerWidgetParser extends WidgetParser {
   //     ),
   //   );
   // }
+  //Todo  need to implement parser for BoxDecoration
   BoxDecoration parseBoxDecoration(Map<String, dynamic>? map) {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(5),
@@ -23,15 +24,17 @@ class DecoratedContainerWidgetParser extends WidgetParser {
     );
   }
 
-  /// BorderDecoration
-  // Map<String, dynamic>? exportBorderSide(BoxDecoration? boxDecoration) {
+  //BorderDecoration
+  // Map<String, dynamic>? exportBorderSide(
+  //     BoxDecoration? boxDecoration, BuildContext? buildContext) {
   //   if (boxDecoration == null) {
   //     return null;
   //   }
   //   return <String, dynamic>{
   //     "color": boxDecoration.color?.value.toRadixString(16),
-  //     "borderRadius": boxDecoration.borderRadius.,
-  //     "borderWidth": borderSide.style.index,
+  //     "borderRadius":
+  //         boxDecoration.borderRadius?.resolve(Directionality.of(buildContext!)),
+  //     "borderWidth": null,
   //   };
   // }
 

@@ -2,8 +2,6 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:onboarding/app/modules/onboarding/controllers/onboarding_controller.dart';
 
-import '../modules/home/controllers/home_controller.dart';
-
 class NameTextFieldParser extends WidgetParser {
   final TextEditingController textEditingController = TextEditingController();
 

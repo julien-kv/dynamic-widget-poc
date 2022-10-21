@@ -46,11 +46,9 @@ packages:
   dynamic_widget:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "7bd392f736be48786c48bf5e7d179188d5425bff"
-      url: "https://github.com/nathanael540/dynamic_widget"
-    source: git
+      path: dynamic_widget
+      relative: true
+    source: path
     version: "4.0.5"
   fake_async:
     dependency: transitive

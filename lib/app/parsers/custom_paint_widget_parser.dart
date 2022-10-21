@@ -7,6 +7,7 @@ class CustomPaintWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
+    //TODO need to add parser for OnBoardingCardPainter
     Map<String, dynamic>? childMap = map['child'];
     Widget? child = childMap == null
         ? null

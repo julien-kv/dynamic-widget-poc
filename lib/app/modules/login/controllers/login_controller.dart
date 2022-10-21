@@ -1,12 +1,12 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:onboarding/app/routes/app_pages.dart';
 
-class HomeController extends GetxController {
+import '../../../routes/app_pages.dart';
+
+class LoginController extends GetxController {
   final finalJson = {}.obs;
   final count = 0.obs;
   final isLoading = false.obs;
