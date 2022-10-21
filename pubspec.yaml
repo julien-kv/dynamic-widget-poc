@@ -8,7 +8,7 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   dynamic_widget:
-    path: ./dynamic_widget
+    path: ./lib/dynamic_widget
   flutter:
     sdk: flutter
   flutter_screenutil: ^5.5.4
