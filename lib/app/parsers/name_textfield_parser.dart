@@ -8,6 +8,7 @@ class NameTextFieldParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
+    //todo: need to implement generic parser
     return TextField(
         decoration: InputDecoration(hintText: "John Doe"),
         controller: textEditingController,

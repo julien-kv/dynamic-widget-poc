@@ -3,6 +3,7 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
 class ProfileSetupContainerParser extends WidgetParser {
+  //todo: parse the box decoration
   BoxDecoration parseBoxDecoration(Map<String, dynamic>? map) {
     return BoxDecoration(borderRadius: BorderRadius.circular(60));
   }
