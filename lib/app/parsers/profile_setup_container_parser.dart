@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 class ProfileSetupContainerParser extends WidgetParser {
   BoxDecoration parseBoxDecoration(Map<String, dynamic>? map) {
-    return BoxDecoration(
-        color: Colors.white54, borderRadius: BorderRadius.circular(20));
+    return BoxDecoration(borderRadius: BorderRadius.circular(60));
   }
 
   @override

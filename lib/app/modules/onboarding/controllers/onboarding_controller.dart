@@ -32,175 +32,178 @@ class OnboardingController extends GetxController {
             "alignment": null,
             "padding": null,
             "color": null,
-            "margin": "0.0,178.92,0.0,0.0",
+            "margin": "20.0,178.92,20.0,90.0",
             "constraints": null,
             "child": {
-              "type": "ProfileSetupContainer",
-              "alignment": "center",
-              "decoration": null,
-              "padding": null,
-              "color": "#ffffff",
-              "margin": "20.0,0.0,20.0,90.0",
-              "constraints": null,
+              "type": "CustomPaint",
               "child": {
-                "type": "Container",
-                "alignment": null,
-                "padding": "0.0,20.0,0.0,0.0",
-                "color": null,
-                "margin": null,
-                "constraints": {
-                  "minWidth": 302.61,
-                  "maxWidth": 302.61,
-                  "minHeight": 0.0,
-                  "maxHeight": 9999999999.0
-                },
+                "type": "ProfileSetupContainer",
+                "alignment": "center",
+                "decoration": null,
+                "padding": null,
+                "color": "#ffffff",
+                "margin": "20.0,0.0,20.0,10",
+                "constraints": null,
                 "child": {
-                  "type": "SingleChildScrollView",
-                  "scrollDirection": "vertical",
-                  "reverse": false,
-                  "padding": "0,0,0,0",
+                  "type": "Container",
+                  "alignment": null,
+                  "padding": "0.0,20.0,0.0,0.0",
+                  "color": null,
+                  "margin": null,
+                  "constraints": {
+                    "minWidth": 302.61,
+                    "maxWidth": 302.61,
+                    "minHeight": 0.0,
+                    "maxHeight": 9999999999.0
+                  },
                   "child": {
-                    "type": "Column",
-                    "crossAxisAlignment": "center",
-                    "mainAxisAlignment": "start",
-                    "mainAxisSize": "max",
-                    "textBaseline": "ideographic",
-                    "textDirection": null,
-                    "verticalDirection": "down",
-                    "children": [
-                      {
-                        "type": "Text",
-                        "data": "Help us put a name to this account",
-                        "textAlign": "center",
-                        "overflow": null,
-                        "maxLines": null,
-                        "semanticsLabel": null,
-                        "softWrap": null,
-                        "textDirection": "ltr",
-                        "style": {
-                          "color": "ff424242",
-                          "debugLabel": null,
-                          "decoration": "none",
-                          "fontSize": 16.0,
-                          "fontFamily": null,
-                          "fontStyle": "normal",
-                          "fontWeight": "w600"
+                    "type": "SingleChildScrollView",
+                    "scrollDirection": "vertical",
+                    "reverse": false,
+                    "padding": "0,0,0,0",
+                    "child": {
+                      "type": "Column",
+                      "crossAxisAlignment": "center",
+                      "mainAxisAlignment": "start",
+                      "mainAxisSize": "max",
+                      "textBaseline": "ideographic",
+                      "textDirection": null,
+                      "verticalDirection": "down",
+                      "children": [
+                        {
+                          "type": "Text",
+                          "data": "Help us put a name to this account",
+                          "textAlign": "center",
+                          "overflow": null,
+                          "maxLines": null,
+                          "semanticsLabel": null,
+                          "softWrap": null,
+                          "textDirection": "ltr",
+                          "style": {
+                            "color": "ff424242",
+                            "debugLabel": null,
+                            "decoration": "none",
+                            "fontSize": 16.0,
+                            "fontFamily": null,
+                            "fontStyle": "normal",
+                            "fontWeight": "w600"
+                          },
+                          "textScaleFactor": null
                         },
-                        "textScaleFactor": null
-                      },
-                      {
-                        "type": "SizedBox",
-                        "width": null,
-                        "height": 14.0,
-                        "child": null
-                      },
-                      {
-                        "type": "Text",
-                        "data":
-                            "Your @handle is unique. You can always change it later",
-                        "textAlign": "center",
-                        "overflow": null,
-                        "maxLines": null,
-                        "semanticsLabel": null,
-                        "softWrap": null,
-                        "textDirection": "ltr",
-                        "style": {
-                          "color": "ff424242",
-                          "debugLabel": null,
-                          "decoration": "none",
-                          "fontSize": 14.0,
-                          "fontFamily": null,
-                          "fontStyle": "normal",
-                          "fontWeight": "normal"
+                        {
+                          "type": "SizedBox",
+                          "width": null,
+                          "height": 14.0,
+                          "child": null
                         },
-                        "textScaleFactor": null
-                      },
-                      {
-                        "type": "SizedBox",
-                        "width": null,
-                        "height": 28.0,
-                        "child": null
-                      },
-                      {
-                        "type": "Column",
-                        "crossAxisAlignment": "start",
-                        "mainAxisAlignment": "start",
-                        "mainAxisSize": "max",
-                        "textBaseline": "ideographic",
-                        "textDirection": null,
-                        "verticalDirection": "down",
-                        "children": [
-                          {
-                            "type": "Text",
-                            "data": "Name",
-                            "textAlign": "start",
-                            "overflow": null,
-                            "maxLines": null,
-                            "semanticsLabel": null,
-                            "softWrap": null,
-                            "textDirection": "ltr",
-                            "style": {
-                              "color": "ff424242",
-                              "debugLabel": null,
-                              "decoration": "none",
-                              "fontSize": 14.0,
-                              "fontFamily": null,
-                              "fontStyle": "normal",
-                              "fontWeight": "normal"
+                        {
+                          "type": "Text",
+                          "data":
+                              "Your @handle is unique. You can always change it later",
+                          "textAlign": "center",
+                          "overflow": null,
+                          "maxLines": null,
+                          "semanticsLabel": null,
+                          "softWrap": null,
+                          "textDirection": "ltr",
+                          "style": {
+                            "color": "ff424242",
+                            "debugLabel": null,
+                            "decoration": "none",
+                            "fontSize": 14.0,
+                            "fontFamily": null,
+                            "fontStyle": "normal",
+                            "fontWeight": "normal"
+                          },
+                          "textScaleFactor": null
+                        },
+                        {
+                          "type": "SizedBox",
+                          "width": null,
+                          "height": 28.0,
+                          "child": null
+                        },
+                        {
+                          "type": "Column",
+                          "crossAxisAlignment": "start",
+                          "mainAxisAlignment": "start",
+                          "mainAxisSize": "max",
+                          "textBaseline": "ideographic",
+                          "textDirection": null,
+                          "verticalDirection": "down",
+                          "children": [
+                            {
+                              "type": "Text",
+                              "data": "Name",
+                              "textAlign": "start",
+                              "overflow": null,
+                              "maxLines": null,
+                              "semanticsLabel": null,
+                              "softWrap": null,
+                              "textDirection": "ltr",
+                              "style": {
+                                "color": "ff424242",
+                                "debugLabel": null,
+                                "decoration": "none",
+                                "fontSize": 14.0,
+                                "fontFamily": null,
+                                "fontStyle": "normal",
+                                "fontWeight": "normal"
+                              },
+                              "textScaleFactor": null
                             },
-                            "textScaleFactor": null
-                          },
-                          {
-                            "type": "NameTextField",
-                          },
-                          {
-                            "type": "SizedBox",
-                            "width": null,
-                            "height": 7.0,
-                            "child": null
-                          },
-                          {
-                            "type": "SizedBox",
-                            "width": null,
-                            "height": 24.0,
-                            "child": null
-                          },
-                          {
-                            "type": "Text",
-                            "data": "Handle",
-                            "textAlign": "start",
-                            "overflow": null,
-                            "maxLines": null,
-                            "semanticsLabel": null,
-                            "softWrap": null,
-                            "textDirection": "ltr",
-                            "style": {
-                              "color": "ff424242",
-                              "debugLabel": null,
-                              "decoration": "none",
-                              "fontSize": 14.0,
-                              "fontFamily": null,
-                              "fontStyle": "normal",
-                              "fontWeight": "normal"
+                            {
+                              "type": "NameTextField",
                             },
-                            "textScaleFactor": null
-                          },
-                          {
-                            "type": "HandleTextField",
-                          },
-                          {
-                            "type": "SizedBox",
-                            "width": null,
-                            "height": 7.0,
-                            "child": null
-                          }
-                        ]
-                      }
-                    ]
+                            {
+                              "type": "SizedBox",
+                              "width": null,
+                              "height": 7.0,
+                              "child": null
+                            },
+                            {
+                              "type": "SizedBox",
+                              "width": null,
+                              "height": 24.0,
+                              "child": null
+                            },
+                            {
+                              "type": "Text",
+                              "data": "Handle",
+                              "textAlign": "start",
+                              "overflow": null,
+                              "maxLines": null,
+                              "semanticsLabel": null,
+                              "softWrap": null,
+                              "textDirection": "ltr",
+                              "style": {
+                                "color": "ff424242",
+                                "debugLabel": null,
+                                "decoration": "none",
+                                "fontSize": 14.0,
+                                "fontFamily": null,
+                                "fontStyle": "normal",
+                                "fontWeight": "normal"
+                              },
+                              "textScaleFactor": null
+                            },
+                            {
+                              "type": "HandleTextField",
+                            },
+                            {
+                              "type": "SizedBox",
+                              "width": null,
+                              "height": 7.0,
+                              "child": null
+                            }
+                          ]
+                        }
+                      ]
+                    }
                   }
                 }
               }
-            }
+            },
           },
           {
             "type": "Align",
@@ -225,26 +228,6 @@ class OnboardingController extends GetxController {
               "filterQuality": "low"
             }
           },
-          {
-            "type": "Align",
-            "alignment": "bottomCenter",
-            "widthFactor": null,
-            "heightFactor": null,
-            "child": {
-              "type": "Container",
-              "alignment": null,
-              "padding": null,
-              "color": null,
-              "margin": null,
-              "constraints": {
-                "minWidth": 60.0,
-                "maxWidth": 60.0,
-                "minHeight": 60.0,
-                "maxHeight": 60.0
-              },
-              "child": null
-            }
-          }
         ]
       };
       isLoading.value = false;
