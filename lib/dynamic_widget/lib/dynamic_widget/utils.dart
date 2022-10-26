@@ -1172,28 +1172,6 @@ double? getScreenAdaptedDimension(
 
 double exportOriginalDimension(String dimensionString, BuildContext? context,
     {bool? isheight}) {
-  final dimensionStringList = dimensionString.split(".");
-  if (["w", "h", "sw", "sh"].contains(dimensionStringList.last)) {
-    final converterText = dimensionStringList.removeLast();
-    final joinedDimensionValue = double.parse(dimensionStringList.join("."));
-    switch (".${converterText}") {
-      case ".w":
-        return joinedDimensionValue *
-            designSize.width /
-            displaySize(context!).width;
-
-      case ".h":
-        return joinedDimensionValue *
-            designSize.height /
-            displaySize(context!).height;
-
-      case ".sw":
-        return joinedDimensionValue / displaySize(context!).width;
-
-      case ".sh":
-        return joinedDimensionValue / displaySize(context!).height;
-    }
-  }
   final dimensionInDouble = double.parse(dimensionString);
   if (isheight != null) {
     return dimensionInDouble * designSize.height / displaySize(context!).height;
