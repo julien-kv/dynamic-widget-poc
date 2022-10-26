@@ -1140,7 +1140,11 @@ double? getScreenAdaptedDimension(
   final dimensionStringList = dimensionString.split(".");
   if (["w", "h", "sw", "sh"].contains(dimensionStringList.last)) {
     final converterText = dimensionStringList.removeLast();
-    final joinedDimensionValue = double.parse(dimensionStringList.join("."));
+    //if decimal comes first for eg. .1,.3 etc.
+    final numberString = dimensionString[0] != "."
+        ? dimensionStringList.join(".")
+        : "." + dimensionStringList.join(".");
+    final joinedDimensionValue = double.parse(numberString);
     switch (".${converterText}") {
       case ".w":
         return joinedDimensionValue /

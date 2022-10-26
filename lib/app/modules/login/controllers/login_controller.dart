@@ -67,8 +67,8 @@ class LoginController extends GetxController {
             "color": null,
             "margin": "45.0,0.0,45.0,0.0",
             "constraints": {
-              'minWidth': "50.w",
-              'maxWidth': "500.w",
+              'minWidth': "20.w",
+              'maxWidth': "50.w",
               'minHeight': "50.h",
               'maxHeight': "100.h",
             },
