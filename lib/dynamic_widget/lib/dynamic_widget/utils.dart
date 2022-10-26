@@ -1,6 +1,7 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../app/helper/size_helpers.dart';
 
@@ -1147,36 +1148,32 @@ double? getScreenAdaptedDimension(
     final joinedDimensionValue = double.parse(numberString);
     switch (".${converterText}") {
       case ".w":
-        return joinedDimensionValue /
-            designSize.width *
-            displaySize(context!).width;
+        return joinedDimensionValue.w;
 
       case ".h":
-        return joinedDimensionValue /
-            designSize.height *
-            displaySize(context!).height;
+        return joinedDimensionValue.h;
 
       case ".sw":
-        return joinedDimensionValue * displaySize(context!).width;
+        return joinedDimensionValue.sw;
 
       case ".sh":
-        return joinedDimensionValue * displaySize(context!).height;
+        return joinedDimensionValue.sh;
     }
   }
   final dimensionInDouble = double.parse(dimensionString);
   if (isheight != null) {
-    return dimensionInDouble / designSize.height * displaySize(context!).height;
+    return dimensionInDouble / 1.h;
   }
-  return dimensionInDouble / designSize.width * displaySize(context!).width;
+  return dimensionInDouble / 1.w;
 }
 
 double exportOriginalDimension(String dimensionString, BuildContext? context,
     {bool? isheight}) {
   final dimensionInDouble = double.parse(dimensionString);
   if (isheight != null) {
-    return dimensionInDouble * designSize.height / displaySize(context!).height;
+    return dimensionInDouble / 1.h;
   }
-  return dimensionInDouble * designSize.width / displaySize(context!).width;
+  return dimensionInDouble / 1.w;
 }
 
 Map<String, dynamic> exportConstraints(

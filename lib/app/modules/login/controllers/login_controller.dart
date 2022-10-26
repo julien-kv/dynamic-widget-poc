@@ -66,12 +66,12 @@ class LoginController extends GetxController {
             "padding": null,
             "color": null,
             "margin": "45.0,0.0,45.0,0.0",
-            "constraints": {
-              'minWidth': "20.w",
-              'maxWidth': "50.w",
-              'minHeight': "50.h",
-              'maxHeight': "100.h",
-            },
+            // "constraints": {
+            //   'minWidth': "20.w",
+            //   'maxWidth': "50.w",
+            //   'minHeight': "50.h",
+            //   'maxHeight': "100.h",
+            // },
             // "constraints": null,
             "child": {
               "type": "TextButton",
