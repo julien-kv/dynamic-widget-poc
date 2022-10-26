@@ -45,3 +45,6 @@ app.*.map.json
 
 #json exporter
 lib/app/helper/json_exporters
+
+### VisualStudioCode ###
+.vscode/launch.json

@@ -3,8 +3,6 @@ import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../app/helper/size_helpers.dart';
-
 TextAlign parseTextAlign(String? textAlignString) {
   //left the system decide
   TextAlign textAlign = TextAlign.start;
@@ -1141,7 +1139,7 @@ double? getScreenAdaptedDimension(
   final dimensionStringList = dimensionString.split(".");
   if (["w", "h", "sw", "sh"].contains(dimensionStringList.last)) {
     final converterText = dimensionStringList.removeLast();
-    //if decimal comes first for eg. .1,.3 etc.
+    //if decimal comes first for eg: .1,.3 etc.
     final numberString = dimensionString[0] != "."
         ? dimensionStringList.join(".")
         : "." + dimensionStringList.join(".");
@@ -1161,18 +1159,14 @@ double? getScreenAdaptedDimension(
     }
   }
   final dimensionInDouble = double.parse(dimensionString);
-  if (isheight != null) {
-    return dimensionInDouble / 1.h;
-  }
-  return dimensionInDouble / 1.w;
+  if (isheight != null) return dimensionInDouble.h;
+  return dimensionInDouble.w;
 }
 
 double exportOriginalDimension(String dimensionString, BuildContext? context,
     {bool? isheight}) {
   final dimensionInDouble = double.parse(dimensionString);
-  if (isheight != null) {
-    return dimensionInDouble / 1.h;
-  }
+  if (isheight != null) return dimensionInDouble / 1.h;
   return dimensionInDouble / 1.w;
 }
 
