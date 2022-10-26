@@ -8,7 +8,8 @@ class ContainerWidgetParser extends WidgetParser {
       ClickListener? listener) {
     Alignment? alignment = parseAlignment(map['alignment']);
     Color? color = parseHexColor(map['color']);
-    BoxConstraints constraints = parseBoxConstraints(map['constraints']);
+    BoxConstraints constraints =
+        parseBoxConstraints(map['constraints'], buildContext);
     //TODO: decoration, foregroundDecoration and transform properties to be implemented.
     EdgeInsetsGeometry? margin = parseEdgeInsetsGeometry(map['margin']);
     EdgeInsetsGeometry? padding = parseEdgeInsetsGeometry(map['padding']);
@@ -52,6 +53,7 @@ class ContainerWidgetParser extends WidgetParser {
     var padding = realWidget.padding as EdgeInsets?;
     var margin = realWidget.margin as EdgeInsets?;
     var constraints = realWidget.constraints;
+
     return <String, dynamic>{
       "type": widgetName,
       "alignment": realWidget.alignment != null
@@ -66,8 +68,9 @@ class ContainerWidgetParser extends WidgetParser {
       "margin": margin != null
           ? "${margin.left},${margin.top},${margin.right},${margin.bottom}"
           : null,
-      "constraints":
-          constraints != null ? exportConstraints(constraints) : null,
+      "constraints": constraints != null
+          ? exportConstraints(constraints, buildContext)
+          : null,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }
