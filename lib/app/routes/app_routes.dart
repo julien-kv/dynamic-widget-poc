@@ -5,6 +5,8 @@ abstract class Routes {
   Routes._();
   static const ONBOARDING = _Paths.ONBOARDING;
   static const LOGIN = _Paths.LOGIN;
+  static const HOME = _Paths.HOME;
+  static const PROFILE = _Paths.PROFILE;
   static const SAMPLE_FEATURE = _Paths.SAMPLE_FEATURE;
 }
 
@@ -12,5 +14,7 @@ abstract class _Paths {
   _Paths._();
   static const ONBOARDING = '/onboarding';
   static const LOGIN = '/login';
+  static const HOME = '/home';
+  static const PROFILE = '/profile';
   static const SAMPLE_FEATURE = '/sample-feature';
 }
