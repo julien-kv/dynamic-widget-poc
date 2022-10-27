@@ -61,12 +61,18 @@ class LoginController extends GetxController {
           {"type": "SizedBox", "width": null, "height": 10.0, "child": null},
           {
             "type": "DecoratedContainer",
-            "decoration": null,
+            "decoration": {"borderRadius": "5,5,5,5", "borderWidth": 0.2},
             "alignment": null,
             "padding": null,
             "color": null,
             "margin": "45.0,0.0,45.0,0.0",
-            "constraints": null,
+            // "constraints": {
+            //   'minWidth': "20.w",
+            //   'maxWidth': "50.w",
+            //   'minHeight': "50.h",
+            //   'maxHeight': "100.h",
+            // },
+            // "constraints": null,
             "child": {
               "type": "TextButton",
               "click_event": "gotogoogle",
@@ -151,7 +157,7 @@ class LoginController extends GetxController {
           {"type": "SizedBox", "width": null, "height": 22.0, "child": null},
           {
             "type": "DecoratedContainer",
-            "decoration": null,
+            "decoration": {"borderRadius": "5,5,5,5", "borderWidth": 0.2},
             "alignment": null,
             "padding": null,
             "color": null,
