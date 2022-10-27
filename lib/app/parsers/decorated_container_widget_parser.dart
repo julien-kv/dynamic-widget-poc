@@ -3,40 +3,52 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
 class DecoratedContainerWidgetParser extends WidgetParser {
-  // BorderDecoration
-  // BoxDecoration parseBoxDecoration(Map<String, dynamic>? map) {
-  //   Color? color = parseHexColor(map?['color']);
-  //   BorderRadius? borderRadius = BorderRadius.circular(map?['borderRadius']);
-  //   double? borderWidth = map?['borderWidth'];
-  //   return BoxDecoration(
-  //     borderRadius: borderRadius,
-  //     color: color,
-  //     border: Border.all(
-  //       width: borderWidth ?? 1,
-  //     ),
-  //   );
-  // }
-  //Todo  need to implement parser for BoxDecoration
-  BoxDecoration parseBoxDecoration(Map<String, dynamic>? map) {
+//  BoxDecoration
+  BoxDecoration parseBoxDecoration(Map<String, dynamic> map) {
+    Color? color = parseHexColor(map['color']);
+    final radius = map.containsKey('borderRadius')
+        ? map['borderRadius'].toString().split(",")
+        : null;
+    BorderRadius? borderRadius;
+    double? borderWidth = map['borderWidth'];
+    if (radius != null) {
+      double? topLeft = double.parse(radius[0]);
+      double? topRight = double.parse(radius[1]);
+      double? bottomLeft = double.parse(radius[2]);
+      double? bottomRight = double.parse(radius[3]);
+
+      borderRadius = BorderRadius.only(
+          topLeft: Radius.circular(topLeft),
+          topRight: Radius.circular(topRight),
+          bottomLeft: Radius.circular(bottomLeft),
+          bottomRight: Radius.circular(bottomRight));
+    }
+
     return BoxDecoration(
-      borderRadius: BorderRadius.circular(5),
-      border: Border.all(width: .2),
+      borderRadius: borderRadius,
+      color: color,
+      border: Border.all(
+        width: borderWidth ?? 1,
+      ),
     );
   }
 
-  //BorderDecoration
-  // Map<String, dynamic>? exportBorderSide(
-  //     BoxDecoration? boxDecoration, BuildContext? buildContext) {
-  //   if (boxDecoration == null) {
-  //     return null;
-  //   }
-  //   return <String, dynamic>{
-  //     "color": boxDecoration.color?.value.toRadixString(16),
-  //     "borderRadius":
-  //         boxDecoration.borderRadius?.resolve(Directionality.of(buildContext!)),
-  //     "borderWidth": null,
-  //   };
-  // }
+  // BoxDecoration
+  Map<String, dynamic>? exportBoxDecoration(
+      BoxDecoration? boxDecoration, BuildContext? buildContext) {
+    if (boxDecoration == null) {
+      return null;
+    }
+    var borderRadius = boxDecoration.borderRadius!.resolve(
+      Directionality.of(buildContext!),
+    );
+    return <String, dynamic>{
+      "color": boxDecoration.color?.value.toRadixString(16),
+      "borderRadius":
+          "${borderRadius.topLeft.x},${borderRadius.topRight.x},${borderRadius.bottomLeft.x},${borderRadius.bottomRight.x}",
+      "borderWidth": boxDecoration.border?.top.width,
+    };
+  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -44,7 +56,8 @@ class DecoratedContainerWidgetParser extends WidgetParser {
     Alignment? alignment = parseAlignment(map['alignment']);
     Color? color =
         map.containsKey("decoration") ? null : parseHexColor(map['color']);
-    BoxConstraints constraints = parseBoxConstraints(map['constraints']);
+    BoxConstraints constraints =
+        parseBoxConstraints(map['constraints'], buildContext);
     BoxDecoration? boxDecoration = map.containsKey('decoration')
         ? parseBoxDecoration(map['decoration'])
         : null;
@@ -93,6 +106,8 @@ class DecoratedContainerWidgetParser extends WidgetParser {
     var constraints = realWidget.constraints;
     return <String, dynamic>{
       "type": widgetName,
+      "decoration":
+          exportBoxDecoration(widget.decoration as BoxDecoration, buildContext),
       "alignment": realWidget.alignment != null
           ? exportAlignment(realWidget.alignment as Alignment?)
           : null,
@@ -105,8 +120,9 @@ class DecoratedContainerWidgetParser extends WidgetParser {
       "margin": margin != null
           ? "${margin.left},${margin.top},${margin.right},${margin.bottom}"
           : null,
-      "constraints":
-          constraints != null ? exportConstraints(constraints) : null,
+      "constraints": constraints != null
+          ? exportConstraints(constraints, buildContext)
+          : null,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }

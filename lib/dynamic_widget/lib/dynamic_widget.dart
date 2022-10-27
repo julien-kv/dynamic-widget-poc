@@ -36,6 +36,7 @@ import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.d
 import 'package:dynamic_widget/dynamic_widget/scrolling/pageview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/single_child_scroll_view_widget_parser.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:logging/logging.dart';
 
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
@@ -110,9 +111,19 @@ class DynamicWidgetBuilder {
     }
   }
 
+  static void initScreenUtil(BuildContext buildContext) {
+    ScreenUtil.init(
+      buildContext,
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+    );
+  }
+
   static Widget? build(
       String json, BuildContext buildContext, ClickListener listener) {
     initDefaultParsersIfNess();
+    initScreenUtil(buildContext);
     var map = jsonDecode(json);
     ClickListener _listener =
         listener == null ? new NonResponseWidgetClickListener() : listener;

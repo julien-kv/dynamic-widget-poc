@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 TextAlign parseTextAlign(String? textAlignString) {
   //left the system decide
@@ -74,7 +73,7 @@ TextOverflow? parseTextOverflow(String? textOverflowString) {
 }
 
 String? exportTextOverflow(TextOverflow? textOverflow) {
-  if(textOverflow == null){
+  if (textOverflow == null) {
     return null;
   }
   String rt = "ellipsis";
@@ -308,7 +307,8 @@ Alignment? parseAlignment(String? alignmentString) {
 
 const double infinity = 9999999999;
 
-BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
+BoxConstraints parseBoxConstraints(
+    Map<String, dynamic>? map, BuildContext context) {
   double minWidth = 0.0;
   double maxWidth = double.infinity;
   double minHeight = 0.0;
@@ -316,7 +316,8 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
 
   if (map != null) {
     if (map.containsKey('minWidth')) {
-      var minWidthValue = map['minWidth']?.toDouble();
+      var minWidthValue =
+          getScreenAdaptedDimension(map['minWidth'].toString(), context);
 
       if (minWidthValue != null) {
         if (minWidthValue >= infinity) {
@@ -328,7 +329,8 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
     }
 
     if (map.containsKey('maxWidth')) {
-      var maxWidthValue = map['maxWidth']?.toDouble();
+      var maxWidthValue =
+          getScreenAdaptedDimension(map['maxWidth'].toString(), context);
 
       if (maxWidthValue != null) {
         if (maxWidthValue >= infinity) {
@@ -340,7 +342,9 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
     }
 
     if (map.containsKey('minHeight')) {
-      var minHeightValue = map['minHeight']?.toDouble();
+      var minHeightValue = getScreenAdaptedDimension(
+          map['minHeight'].toString(), context,
+          isheight: true);
 
       if (minHeightValue != null) {
         if (minHeightValue >= infinity) {
@@ -352,7 +356,9 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
     }
 
     if (map.containsKey('maxHeight')) {
-      var maxHeightValue = map['maxHeight']?.toDouble();
+      var maxHeightValue = getScreenAdaptedDimension(
+          map['maxHeight'].toString(), context,
+          isheight: true);
 
       if (maxHeightValue != null) {
         if (maxHeightValue >= infinity) {
@@ -1126,16 +1132,62 @@ String exportAlignment(Alignment? alignment) {
   return "center";
 }
 
-Map<String, dynamic> exportConstraints(BoxConstraints constraints) {
+double? getScreenAdaptedDimension(
+    String? dimensionString, BuildContext? context,
+    {bool? isheight}) {
+  if (dimensionString == null) return null;
+  final dimensionStringList = dimensionString.split(".");
+  if (["w", "h", "sw", "sh"].contains(dimensionStringList.last)) {
+    final converterText = dimensionStringList.removeLast();
+    //if decimal comes first for eg: .1,.3 etc.
+    final numberString = dimensionString[0] != "."
+        ? dimensionStringList.join(".")
+        : "." + dimensionStringList.join(".");
+    final joinedDimensionValue = double.parse(numberString);
+    switch (".${converterText}") {
+      case ".w":
+        return joinedDimensionValue.w;
+
+      case ".h":
+        return joinedDimensionValue.h;
+
+      case ".sw":
+        return joinedDimensionValue.sw;
+
+      case ".sh":
+        return joinedDimensionValue.sh;
+    }
+  }
+  final dimensionInDouble = double.parse(dimensionString);
+  if (isheight != null) return dimensionInDouble.h;
+  return dimensionInDouble.w;
+}
+
+double exportOriginalDimension(String dimensionString, BuildContext? context,
+    {bool? isheight}) {
+  final dimensionInDouble = double.parse(dimensionString);
+  if (isheight != null) return dimensionInDouble / 1.h;
+  return dimensionInDouble / 1.w;
+}
+
+Map<String, dynamic> exportConstraints(
+    BoxConstraints constraints, BuildContext? context) {
   return {
-    'minWidth': constraints.minWidth,
+    'minWidth':
+        exportOriginalDimension(constraints.minWidth.toString(), context),
     'maxWidth': constraints.maxWidth == double.infinity
         ? infinity
-        : constraints.maxWidth,
-    'minHeight': constraints.minHeight,
+        : exportOriginalDimension(
+            constraints.maxWidth.toString(),
+            context,
+          ),
+    'minHeight': exportOriginalDimension(
+        constraints.minHeight.toString(), context,
+        isheight: true),
     'maxHeight': constraints.maxHeight == double.infinity
         ? infinity
-        : constraints.maxHeight,
+        : exportOriginalDimension(constraints.maxHeight.toString(), context,
+            isheight: true),
   };
 }
 

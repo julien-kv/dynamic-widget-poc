@@ -14,7 +14,8 @@ class ProfileSetupContainerParser extends WidgetParser {
     Alignment? alignment = parseAlignment(map['alignment']);
     Color? color =
         map.containsKey("decoration") ? null : parseHexColor(map['color']);
-    BoxConstraints constraints = parseBoxConstraints(map['constraints']);
+    BoxConstraints constraints =
+        parseBoxConstraints(map['constraints'], buildContext);
     BoxDecoration? boxDecoration = map.containsKey('decoration')
         ? parseBoxDecoration(map['decoration'])
         : null;
@@ -75,8 +76,9 @@ class ProfileSetupContainerParser extends WidgetParser {
       "margin": margin != null
           ? "${margin.left},${margin.top},${margin.right},${margin.bottom}"
           : null,
-      "constraints":
-          constraints != null ? exportConstraints(constraints) : null,
+      "constraints": constraints != null
+          ? exportConstraints(constraints, buildContext)
+          : null,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }

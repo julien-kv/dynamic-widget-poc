@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:onboarding/app/modules/sample_feature/sample_feature.dart';
 
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
@@ -22,6 +23,10 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.SAMPLE_FEATURE,
+      page: () => SampleFeature(),
     ),
   ];
 }
