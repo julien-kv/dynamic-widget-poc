@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onboarding/app/routes/app_pages.dart';
 
+import 'package:onboarding/dynamic_widget/lib/app/listeners/listeners.dart';
+
 class OnboardingController extends GetxController {
   final isLoading = false.obs;
   final finalJson = {}.obs;
@@ -494,16 +496,13 @@ class OnboardingController extends GetxController {
   void onClose() {}
   void increment() => count.value++;
   Widget buildWidget(BuildContext context) {
-    return DynamicWidgetBuilder.build(jsonEncode(finalJson), context,
-            ProfileSetupClickListener(context)) ??
+    return DynamicWidgetBuilder.build(
+            jsonEncode(finalJson), context, OnBoardingSetupClickListener()) ??
         SizedBox();
   }
 }
 
-class ProfileSetupClickListener extends ClickListener {
-  final BuildContext context;
-  ProfileSetupClickListener(this.context);
-
+class OnBoardingSetupClickListener implements TextFieldClickListener {
   final onboardingController = Get.find<OnboardingController>();
 
   @override
@@ -519,10 +518,12 @@ class ProfileSetupClickListener extends ClickListener {
     }
   }
 
+  @override
   void onNameTextChanged(String text) {
     print("Name$text");
   }
 
+  @override
   void onHandleTextChanged(String text) {
     print(text);
   }

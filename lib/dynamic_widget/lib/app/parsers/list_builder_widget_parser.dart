@@ -1,9 +1,9 @@
 import 'dart:convert';
 
+import 'package:dynamic_widget/app/listeners/listeners.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:onboarding/app/modules/home/controllers/home_controller.dart';
 
 class ListBuilderWidgetParser extends WidgetParser {
   @override
@@ -28,7 +28,7 @@ class ListBuilderWidgetParser extends WidgetParser {
         map['children'], buildContext, listener);
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
     Function? getMoreItems;
-    if (listener is HomeClickListener) {
+    if (listener is AbstractHomeCLickListener) {
       getMoreItems = (listener).getMoreItems;
     }
 
@@ -87,7 +87,10 @@ class ListViewWidget extends StatefulWidget {
   final ListViewParams _params;
   final BuildContext _buildContext;
 
-  const ListViewWidget(this._params, this._buildContext, {super.key});
+  const ListViewWidget(
+    this._params,
+    this._buildContext,
+  );
 
   @override
   _ListViewWidgetState createState() => _ListViewWidgetState(_params);

@@ -1,6 +1,6 @@
+import 'package:dynamic_widget/app/listeners/listeners.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:onboarding/app/modules/onboarding/controllers/onboarding_controller.dart';
 
 class HandleTextFieldParser extends WidgetParser {
   final TextEditingController textEditingController = TextEditingController();
@@ -12,7 +12,7 @@ class HandleTextFieldParser extends WidgetParser {
     return TextField(
         decoration: InputDecoration(hintText: "@"),
         controller: textEditingController,
-        onChanged: (listener as ProfileSetupClickListener).onHandleTextChanged);
+        onChanged: (listener as TextFieldClickListener).onHandleTextChanged);
   }
 
   @override

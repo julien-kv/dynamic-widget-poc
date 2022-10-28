@@ -1,6 +1,6 @@
+import 'package:dynamic_widget/app/listeners/listeners.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:onboarding/app/modules/onboarding/controllers/onboarding_controller.dart';
 
 class NameTextFieldParser extends WidgetParser {
   final TextEditingController textEditingController = TextEditingController();
@@ -12,7 +12,10 @@ class NameTextFieldParser extends WidgetParser {
     return TextField(
         decoration: InputDecoration(hintText: "John Doe"),
         controller: textEditingController,
-        onChanged: (listener as ProfileSetupClickListener).onNameTextChanged);
+        onChanged: (text) {
+          if (listener is TextFieldClickListener)
+            listener.onNameTextChanged(text);
+        });
   }
 
   @override
