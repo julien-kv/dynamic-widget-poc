@@ -512,7 +512,7 @@ class OnBoardingSetupClickListener implements TextFieldClickListener {
       onboardingController.loadPageByJsonChange();
     } else {
       // Back to Main APP routes
-      Get.toNamed(Routes.SAMPLE_FEATURE);
+      Get.offAllNamed(Routes.HOME);
     }
   }
 
