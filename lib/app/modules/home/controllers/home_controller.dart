@@ -4,8 +4,6 @@ import 'dart:convert';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'package:onboarding/dynamic_widget/lib/app/listeners/listeners.dart';
-
 import '../../../routes/app_pages.dart';
 
 class HomeController extends GetxController {
@@ -590,7 +588,7 @@ class HomeController extends GetxController {
   }
 }
 
-class HomeClickListener extends AbstractHomeCLickListener {
+class HomeClickListener implements AbstractHomeCLickListener {
   @override
   void onClicked(String? event) async {
     print("Receive click event: ${event ?? ""}");
