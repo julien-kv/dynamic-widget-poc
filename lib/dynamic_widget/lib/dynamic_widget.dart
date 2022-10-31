@@ -245,12 +245,3 @@ class NonResponseWidgetClickListener implements ClickListener {
     print("receiver click event: " + event);
   }
 }
-
-abstract class TextFieldClickListener extends ClickListener {
-  void onNameTextChanged(String text);
-  void onHandleTextChanged(String text);
-}
-
-abstract class AbstractHomeCLickListener extends ClickListener {
-  Future<String> getMoreItems(int limit, int offset);
-}

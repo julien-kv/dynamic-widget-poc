@@ -4,6 +4,7 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onboarding/app/routes/app_pages.dart';
+import 'package:onboarding/dynamic_widget/lib/app/listeners/listeners.dart';
 
 class OnboardingController extends GetxController {
   final isLoading = false.obs;
