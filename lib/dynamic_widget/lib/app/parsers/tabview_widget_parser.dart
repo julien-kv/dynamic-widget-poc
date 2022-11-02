@@ -9,8 +9,6 @@ class TabViewWidgetParser extends WidgetParser {
     final tabPadding = map.containsKey('tabPadding')
         ? parseEdgeInsetsGeometry(map['tabPadding'])
         : null;
-    final tabViewHeight =
-        map.containsKey('tabViewHeight') ? map['tabViewHeight'] : 500;
     final tabChildren = DynamicWidgetBuilder.buildWidgets(
         map['tabChildren'], buildContext, listener);
     final tabViewChildren = DynamicWidgetBuilder.buildWidgets(
@@ -20,7 +18,6 @@ class TabViewWidgetParser extends WidgetParser {
       tabPadding: tabPadding,
       tabChildren: tabChildren,
       tabViewChildren: tabViewChildren,
-      tabViewHeight: tabViewHeight.toDouble(),
     );
 
     return TabViewWidget(params);
@@ -46,7 +43,6 @@ class TabViewWidgetParser extends WidgetParser {
           realWidget._params.tabViewChildren ?? [], buildContext),
       "tempChild": tempChild,
       "dataKey": realWidget._params.dataKey,
-      "tabViewHeight": realWidget._params.tabViewHeight,
     };
   }
 
@@ -110,10 +106,14 @@ class _TabViewWidgetState extends State<TabViewWidget>
                     ))
                 .toList(),
           ),
+          Expanded(
+            child: SizedBox(
+              child: TabBarView(
+                  controller: _tabController, children: _tabViewItems),
+            ),
+          ),
           SizedBox(
-            height: _params.tabViewHeight,
-            child:
-                TabBarView(controller: _tabController, children: _tabViewItems),
+            height: 20,
           ),
         ],
       ),
@@ -127,8 +127,6 @@ class TabViewParams {
   List<Widget?>? tabChildren;
   List<Widget?>? tabViewChildren;
 
-  double? tabViewHeight;
-
   /// use to data binding
   String? dataKey;
 
@@ -138,7 +136,6 @@ class TabViewParams {
   TabViewParams(
       {this.tabPadding,
       this.tabChildren,
-      this.tabViewHeight,
       this.tabViewChildren,
       this.tempChild,
       this.dataKey});

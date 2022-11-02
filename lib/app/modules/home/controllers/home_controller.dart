@@ -149,13 +149,13 @@ class HomeController extends GetxController {
                                   }
                                 ]
                               }
-                            }
+                            },
                           ]
                         }
                       }
                     ]
                   }
-                }
+                },
               },
               {
                 "type": "Container",
@@ -556,22 +556,6 @@ class HomeController extends GetxController {
                         }
                       }
                     },
-                    {
-                      "type": "Container",
-                      "alignment": null,
-                      "padding": "2.0,0.0,7.0,0.0",
-                      "color": null,
-                      "margin": null,
-                      "constraints": null,
-                      "child": {
-                        "type": "Icon",
-                        "data": "android",
-                        "size": 22.0,
-                        "color": "e6bcbcbc",
-                        "semanticLabel": null,
-                        "textDirection": null
-                      }
-                    }
                   ]
                 }
               ]
@@ -621,168 +605,6 @@ class HomeController extends GetxController {
           }
         ]
       };
-      final tileCardJson = {
-        "type": "Card",
-        "color": "ffffffff",
-        "shadowColor": "40bababa",
-        "elevation": 8.0,
-        "borderOnForeground": true,
-        "margin": "0.0,0.0,0.0,0.0,",
-        "semanticContainer": true,
-        "child": {
-          "type": "Stack",
-          "textDirection": "ltr",
-          "fit": "loose",
-          "clipBehavior": "hardEdge",
-          "children": [
-            {
-              "type": "Row",
-              "crossAxisAlignment": "center",
-              "mainAxisAlignment": "start",
-              "mainAxisSize": "max",
-              "textBaseline": "ideographic",
-              "textDirection": null,
-              "verticalDirection": "down",
-              "children": [
-                {
-                  "type": "Container",
-                  "alignment": null,
-                  "padding": "12.0,12.0,8.0,12.0",
-                  "color": null,
-                  "margin": null,
-                  "constraints": null,
-                  "child": {
-                    "type": "Container",
-                    "alignment": "center",
-                    "padding": null,
-                    "color": null,
-                    "margin": null,
-                    "constraints": {
-                      "minWidth": 91.0,
-                      "maxWidth": 91.0,
-                      "minHeight": 91.0,
-                      "maxHeight": 91.0
-                    },
-                    "child": {
-                      "type": "Container",
-                      "alignment": null,
-                      "padding": null,
-                      "color": null,
-                      "margin": null,
-                      "constraints": {
-                        "minWidth": 65.0,
-                        "maxWidth": 65.0,
-                        "minHeight": 65.0,
-                        "maxHeight": 65.0
-                      },
-                      "child": null
-                    }
-                  }
-                },
-                {
-                  "type": "Expanded",
-                  "flex": 1,
-                  "child": {
-                    "type": "Container",
-                    "alignment": null,
-                    "padding": "0.0,12.0,0.0,12.0",
-                    "color": null,
-                    "margin": null,
-                    "constraints": null,
-                    "child": {
-                      "type": "Column",
-                      "crossAxisAlignment": "start",
-                      "mainAxisAlignment": "start",
-                      "mainAxisSize": "max",
-                      "textBaseline": "ideographic",
-                      "textDirection": null,
-                      "verticalDirection": "down",
-                      "children": [
-                        {
-                          "type": "Text",
-                          "data": "Someone again",
-                          "textAlign": "start",
-                          "overflow": "ellipsis",
-                          "maxLines": null,
-                          "semanticsLabel": null,
-                          "softWrap": false,
-                          "textDirection": "ltr",
-                          "style": {
-                            "color": null,
-                            "debugLabel": null,
-                            "decoration": "none",
-                            "fontSize": null,
-                            "fontFamily": null,
-                            "fontStyle": "normal",
-                            "fontWeight": "w500"
-                          },
-                          "textScaleFactor": null
-                        },
-                        {
-                          "type": "Text",
-                          "data": "dev",
-                          "textAlign": "start",
-                          "overflow": "ellipsis",
-                          "maxLines": null,
-                          "semanticsLabel": null,
-                          "softWrap": false,
-                          "textDirection": "ltr",
-                          "style": {
-                            "color": "ff828282",
-                            "debugLabel": null,
-                            "decoration": "none",
-                            "fontSize": null,
-                            "fontFamily": null,
-                            "fontStyle": "normal",
-                            "fontWeight": "w400"
-                          },
-                          "textScaleFactor": null
-                        },
-                        {
-                          "type": "Text",
-                          "data": "teamName",
-                          "textAlign": "start",
-                          "overflow": "ellipsis",
-                          "maxLines": null,
-                          "semanticsLabel": null,
-                          "softWrap": false,
-                          "textDirection": "ltr",
-                          "style": {
-                            "color": "ff4f4f4f",
-                            "debugLabel": null,
-                            "decoration": "none",
-                            "fontSize": null,
-                            "fontFamily": null,
-                            "fontStyle": "normal",
-                            "fontWeight": "w400"
-                          },
-                          "textScaleFactor": null
-                        }
-                      ]
-                    }
-                  }
-                },
-                {
-                  "type": "Container",
-                  "alignment": null,
-                  "padding": "2.0,0.0,7.0,0.0",
-                  "color": null,
-                  "margin": null,
-                  "constraints": null,
-                  "child": {
-                    "type": "Icon",
-                    "data": "android",
-                    "size": 22.0,
-                    "color": "e6bcbcbc",
-                    "semanticLabel": null,
-                    "textDirection": null
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      };
       isLoading.value = false;
     });
   }
@@ -800,7 +622,6 @@ class HomeController extends GetxController {
 class HomeClickListener implements AbstractHomeCLickListener {
   @override
   void onClicked(String? event) async {
-    print("Receive click event: ${event ?? ""}");
     if (event != null) {
       final eventInfo = Uri.parse(event);
       final path = eventInfo.path;
@@ -822,7 +643,7 @@ class HomeClickListener implements AbstractHomeCLickListener {
       [
            {
         "type": "Container",
-        "click_event": "/second",
+        "click_event": "route/profile?id=4",
         "child": {
           "type": "Card",
           "elevation": 8.0,
@@ -946,7 +767,7 @@ class HomeClickListener implements AbstractHomeCLickListener {
       },
       {
         "type": "Container",
-        "click_event": "/second",
+        "click_event": "route/profile?id=5",
         "child": {
           "type": "Card",
           "elevation": 8.0,
