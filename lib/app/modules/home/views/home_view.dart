@@ -14,10 +14,9 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: Obx(() {
-        return Center(
-            child: controller.isLoading.value
-                ? CircularProgressIndicator()
-                : controller.buildWidget(context));
+        return controller.isLoading.value
+            ? Center(child: CircularProgressIndicator())
+            : controller.buildWidget(context);
       }),
     );
   }

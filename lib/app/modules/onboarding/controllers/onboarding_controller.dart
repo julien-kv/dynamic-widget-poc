@@ -236,11 +236,7 @@ class OnboardingController extends GetxController {
             "heightFactor": null,
             "child": {
               "type": "ElevatedButton",
-
-              /// For [click_event] we need to have a standard
-              ///  click_event : '/onboarding-step[pageNo]' for pages
-              ///  click_event : '' for final page
-              "click_event": "/onboarding-step2",
+              "click_event": "pagechange/onboarding-step2",
               "child": {
                 "type": "Text",
                 "data": "NextPage",
@@ -394,11 +390,7 @@ class OnboardingController extends GetxController {
                           },
                           {
                             "type": "ElevatedButton",
-
-                            /// For [click_event] we need to have a standard
-                            ///  click_event : '/onboarding-step[pageNo]' for pages
-                            ///  click_event : '' for final page
-                            "click_event": "",
+                            "click_event": "route/home",
                             "child": {
                               "type": "Text",
                               "data": "NextPage",
@@ -506,13 +498,18 @@ class OnBoardingSetupClickListener implements TextFieldClickListener {
   @override
   void onClicked(String? event) async {
     print("Receive click event: ${event ?? ""}");
-
     if (event != null && event.isNotEmpty) {
-      // API calls for next json is Triggered.
-      onboardingController.loadPageByJsonChange();
-    } else {
-      // Back to Main APP routes
-      Get.offAllNamed(Routes.HOME);
+      final eventInfo = Uri.parse(event);
+      final path = eventInfo.path;
+      switch (path) {
+        case "pagechange/onboarding-step2":
+          // API calls for next json is Triggered.
+          onboardingController.loadPageByJsonChange();
+          break;
+        case "route/home":
+          // Back to Main APP routes
+          Get.offAllNamed(Routes.HOME);
+      }
     }
   }
 
