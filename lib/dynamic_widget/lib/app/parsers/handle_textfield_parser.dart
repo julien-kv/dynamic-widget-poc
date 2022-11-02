@@ -1,22 +1,21 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:onboarding/app/modules/onboarding/controllers/onboarding_controller.dart';
 
-class NameTextFieldParser extends WidgetParser {
+class HandleTextFieldParser extends WidgetParser {
   final TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
-    //todo: need to implement generic parser
+    //TODO: Make textfield Cust
     return TextField(
-        decoration: InputDecoration(hintText: "John Doe"),
+        decoration: InputDecoration(hintText: "@"),
         controller: textEditingController,
-        onChanged: (listener as ProfileSetupClickListener).onNameTextChanged);
+        onChanged: (listener as TextFieldClickListener).onHandleTextChanged);
   }
 
   @override
-  String get widgetName => "NameTextField";
+  String get widgetName => "HandleTextField";
 
   @override
   Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {

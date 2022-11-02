@@ -792,15 +792,12 @@ class HomeController extends GetxController {
 
   Widget buildWidget(BuildContext context) {
     return DynamicWidgetBuilder.build(
-            jsonEncode(finalJson), context, HomeClickListener(context)) ??
+            jsonEncode(finalJson), context, HomeClickListener()) ??
         SizedBox();
   }
 }
 
-class HomeClickListener extends ClickListener {
-  final BuildContext context;
-  HomeClickListener(this.context);
-
+class HomeClickListener implements AbstractHomeCLickListener {
   @override
   void onClicked(String? event) async {
     print("Receive click event: ${event ?? ""}");
@@ -818,6 +815,7 @@ class HomeClickListener extends ClickListener {
     }
   }
 
+  @override
   Future<String> getMoreItems(int limit, int offset) {
     return Future.delayed(const Duration(seconds: 2), () {
       return """
@@ -1070,7 +1068,7 @@ class HomeClickListener extends ClickListener {
           }
         }
       }
-      ]          
+      ]
       """;
     });
   }

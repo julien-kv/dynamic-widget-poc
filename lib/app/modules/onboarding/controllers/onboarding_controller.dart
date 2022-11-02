@@ -494,16 +494,13 @@ class OnboardingController extends GetxController {
   void onClose() {}
   void increment() => count.value++;
   Widget buildWidget(BuildContext context) {
-    return DynamicWidgetBuilder.build(jsonEncode(finalJson), context,
-            ProfileSetupClickListener(context)) ??
+    return DynamicWidgetBuilder.build(
+            jsonEncode(finalJson), context, OnBoardingSetupClickListener()) ??
         SizedBox();
   }
 }
 
-class ProfileSetupClickListener extends ClickListener {
-  final BuildContext context;
-  ProfileSetupClickListener(this.context);
-
+class OnBoardingSetupClickListener implements TextFieldClickListener {
   final onboardingController = Get.find<OnboardingController>();
 
   @override
@@ -515,14 +512,16 @@ class ProfileSetupClickListener extends ClickListener {
       onboardingController.loadPageByJsonChange();
     } else {
       // Back to Main APP routes
-      Get.toNamed(Routes.SAMPLE_FEATURE);
+      Get.offAllNamed(Routes.HOME);
     }
   }
 
+  @override
   void onNameTextChanged(String text) {
     print("Name$text");
   }
 
+  @override
   void onHandleTextChanged(String text) {
     print(text);
   }
