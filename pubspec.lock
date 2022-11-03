@@ -60,9 +60,11 @@ packages:
   dynamic_widget:
     dependency: "direct main"
     description:
-      path: "lib/dynamic_widget"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "581f7aff23fddd6b30d861eff6b8a5d2a15c472c"
+      url: "https://github.com/julienKeyvalue/dynamic_widget"
+    source: git
     version: "4.0.5"
   fake_async:
     dependency: transitive
@@ -234,7 +236,7 @@ packages:
       name: path_provider_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.20"
+    version: "2.0.21"
   path_provider_ios:
     dependency: transitive
     description:
@@ -337,7 +339,7 @@ packages:
       name: sqflite
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.0+2"
+    version: "2.2.0+3"
   sqflite_common:
     dependency: transitive
     description:
