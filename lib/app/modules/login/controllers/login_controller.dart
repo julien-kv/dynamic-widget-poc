@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:onboarding/app/modules/dynamic_testing/build_dynamic.dart';
 
 import '../../../routes/app_pages.dart';
 
@@ -363,7 +364,8 @@ class LoginClickListener extends ClickListener {
     print("Receive click event: ${event ?? ""}");
     switch (event) {
       case "gotogoogle":
-        Get.toNamed(Routes.ONBOARDING);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => HomePageJSONExporter()));
     }
   }
 }
