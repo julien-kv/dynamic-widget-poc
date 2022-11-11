@@ -2,6 +2,7 @@ library dynamic_widget;
 
 import 'dart:convert';
 
+import 'package:dynamic_widget/app/parsers/tabview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/align_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/appbar_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/aspectratio_widget_parser.dart';
@@ -39,6 +40,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:logging/logging.dart';
 
+import 'app/parsers/custom_paint_widget_parser.dart';
+import 'app/parsers/decorated_container_widget_parser.dart';
+import 'app/parsers/handle_textfield_parser.dart';
+import 'app/parsers/list_builder_widget_parser.dart';
+import 'app/parsers/name_textfield_parser.dart';
+import 'app/parsers/optimized_cache_image_widget_parser.dart';
+import 'app/parsers/profile_setup_container_parser.dart';
+import 'app/parsers/spacer_widget_parser.dart';
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
 import 'dynamic_widget/basic/overflowbox_widget_parser.dart';
 import 'dynamic_widget/basic/rotatedbox_widget_parser.dart';
@@ -87,7 +96,16 @@ class DynamicWidgetBuilder {
     TextButtonParser(),
     RotatedBoxWidgetParser(),
     CardParser(),
-    SingleChildScrollViewParser()
+    SingleChildScrollViewParser(),
+    SpacerWidgetParser(),
+    DecoratedContainerWidgetParser(),
+    NameTextFieldParser(),
+    HandleTextFieldParser(),
+    ProfileSetupContainerParser(),
+    CustomPaintWidgetParser(),
+    ListBuilderWidgetParser(),
+    OptimizedCacheImageParser(),
+    TabViewWidgetParser(),
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
@@ -228,4 +246,13 @@ class NonResponseWidgetClickListener implements ClickListener {
     log.info("receiver click event: " + event!);
     print("receiver click event: " + event);
   }
+}
+
+abstract class TextFieldClickListener extends ClickListener {
+  void onNameTextChanged(String text);
+  void onHandleTextChanged(String text);
+}
+
+abstract class AbstractHomeCLickListener extends ClickListener {
+  Future<String> getMoreItems(int limit, int offset);
 }

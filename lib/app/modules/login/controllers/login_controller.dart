@@ -76,7 +76,7 @@ class LoginController extends GetxController {
             // "constraints": null,
             "child": {
               "type": "TextButton",
-              "click_event": "gotogoogle",
+              "click_event": "route/onboarding",
               "foregroundColor": null,
               "backgroundColor": null,
               "overlayColor": null,

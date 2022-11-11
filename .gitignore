@@ -48,3 +48,4 @@ lib/app/helper/json_exporters
 
 ### VisualStudioCode ###
 .vscode/launch.json
+lib/dynamic_widget/android/local.properties
