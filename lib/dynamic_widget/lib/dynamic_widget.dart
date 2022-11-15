@@ -45,7 +45,7 @@ import 'app/parsers/decorated_container_widget_parser.dart';
 import 'app/parsers/handle_textfield_parser.dart';
 import 'app/parsers/list_builder_widget_parser.dart';
 import 'app/parsers/name_textfield_parser.dart';
-import 'app/parsers/optimized_cache_image_widget_parser.dart';
+import 'app/parsers/optimized_cache_image_parser.dart';
 import 'app/parsers/profile_setup_container_parser.dart';
 import 'app/parsers/spacer_widget_parser.dart';
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';

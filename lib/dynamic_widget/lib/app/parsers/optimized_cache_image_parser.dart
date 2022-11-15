@@ -2,6 +2,8 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:optimized_cached_image/optimized_cached_image.dart';
 
+/// This parser handles only [OptimizedCacheImage] with [imageUrl], [placeholder] and
+/// [errorWidget] where [placeholder] and [errorWidget] accepts [placeholder] and[errorWidget] as parameter
 class OptimizedCacheImageParser extends WidgetParser {
   @override
   String get widgetName => "OptimizedCacheImage";
@@ -9,65 +11,38 @@ class OptimizedCacheImageParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
-    print(">>>>>>>>>>>>>>>>>>>>");
-    print("OptimizedCacheImage");
+    Icon? placeholder = map.containsKey("placeholder")
+        ? Icon(
+            IconData(
+              map["placeholder"]["iconCodePoint"],
+              fontFamily: map["placeholder"]["iconFamily"],
+            ),
+            size: map["placeholder"]["size"],
+          )
+        : null;
 
-    String clickEvent =
-        map.containsKey("click_event") ? map['click_event'] : "";
-    double width = map['width'];
-    double height = map['height'];
+    Icon? errorWidget = map.containsKey("errorWidget")
+        ? Icon(
+            IconData(
+              map["errorWidget"]["iconCodePoint"],
+              fontFamily: map["errorWidget"]["iconFamily"],
+            ),
+            size: map["errorWidget"]["size"],
+          )
+        : Icon(Icons.error);
+
     var optimizedCacheImage = OptimizedCacheImage(
-      memCacheHeight:
-          map.containsKey('memCacheHeight') ? map['memCacheHeight'] : null,
-      memCacheWidth:
-          map.containsKey('memCacheWidth') ? map['memCacheWidth'] : null,
-      maxHeightDiskCache: map.containsKey('maxHeightDiskCache')
-          ? map['maxHeightDiskCache']
-          : null,
-      maxWidthDiskCache: map.containsKey('maxWidthDiskCache')
-          ? map['maxWidthDiskCache']
-          : null,
-      imageUrl: "https://picsum.photos/200/300",
-      imageBuilder: (context, imageProvider) => Ink(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: imageProvider,
-            fit: BoxFit.cover,
-          ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(10),
-          ),
-        ),
-      ),
+      fit: BoxFit.cover,
+      imageUrl: map["imageUrl"],
+      placeholder: (context, _) {
+        return placeholder ?? CircularProgressIndicator();
+      },
       errorWidget: (context, url, error) {
+        debugPrint(error);
         OptimizedCacheImage.evictFromCache(url);
-        return Ink(
-          width: width,
-          height: height,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: ResizeImage(
-                NetworkImage("https://picsum.photos/200/300"),
-                height: 44,
-                width: 44,
-              ),
-              fit: BoxFit.cover,
-            ),
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          ),
-        );
+        return errorWidget;
       },
     );
-    try {
-      print(">>>>>>>>>>>>>>>>>>>>");
-      print(optimizedCacheImage.imageUrl);
-    } catch (e) {
-      print(e);
-    }
     return optimizedCacheImage;
   }
 
@@ -75,21 +50,10 @@ class OptimizedCacheImageParser extends WidgetParser {
   Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as OptimizedCacheImage;
     var imageUrl = realWidget.imageUrl;
-    var memCacheHeight = realWidget.memCacheHeight;
-    var memCacheWidth = realWidget.memCacheWidth;
-    var maxHeightDiskCache = realWidget.maxHeightDiskCache;
-    var maxWidthDiskCache = realWidget.maxWidthDiskCache;
-    var width = realWidget.width;
-    var height = realWidget.height;
+
     return <String, dynamic>{
       "type": widgetName,
       "imageUrl": imageUrl,
-      "memCacheHeight": memCacheHeight?.toString(),
-      "memCacheWidth": memCacheWidth?.toString(),
-      "maxHeightDiskCache": maxHeightDiskCache?.toString(),
-      "maxWidthDiskCache": maxWidthDiskCache?.toString(),
-      "width": width ?? 0,
-      "height": height ?? 0,
     };
   }
 
